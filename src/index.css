@@ -1,16 +1,14 @@
 :root {
-  --bg-color: #edf2fb;
-}
+  --color-primary: #7380EC;
+  --color-danger: #ff7782;
+  --color-success: #41f1b6;
+  --color-warning: #ffbb55;
+  --color-white: #fff;
+  --color-background: #f6f6f9;
+  --color-light: rgba(132,139,200,0.18);
 
-* {
-  box-sizing: border-box;
-}
+  --card-border-radius: 2rem;
+  --card-padding: 1.8rem;
 
-body {
-  margin: 0;
-  padding: 0;
-}
-#root {
-  width: 100vw;
-  height: 100vh;
+  --box-shadow: 0 2rem 3rem var(--color-light);
 }
