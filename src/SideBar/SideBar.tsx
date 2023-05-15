@@ -11,7 +11,7 @@ const SideBar = (props: any) => {
       <div className='options'>
         {["user", "pannel", "board"].map((x) => (
           <div className='iconsButton'>
-            <UserIcon />
+            <UserIcon filled={undefined} size={undefined} height={undefined} width={undefined} label={undefined}/>
           </div>
         ))}
       </div>
