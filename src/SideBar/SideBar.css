@@ -1,0 +1,25 @@
+.navBar {
+  background-color: var(--bg-color);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+.iconsButton {
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border-radius: 50%;
+  display: flex;
+  margin: auto;
+}
+
+.iconsButton > svg {
+  margin: auto;
+}
