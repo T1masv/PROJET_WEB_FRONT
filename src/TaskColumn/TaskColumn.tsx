@@ -1,8 +1,14 @@
 import "./TaskColumn.css";
-import { Card, Text } from "@nextui-org/react";
+import { Card, Text, Badge } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 
-function TaskColumn(props: { title: string }) {
+import Task from "../Task/Task";
+
+function TaskColumn(props: {
+  title: string;
+  tasks?: any[];
+  handleShowStatus: Function;
+}) {
   const [borderColor, setBorderColor] = useState();
 
   useEffect(() => {
@@ -15,7 +21,6 @@ function TaskColumn(props: { title: string }) {
   }, []);
   return (
     <Card
-      isPressable
       isHoverable
       variant='bordered'
       css={{ borderColor: borderColor, width: "30%" }}
@@ -26,11 +31,17 @@ function TaskColumn(props: { title: string }) {
             <h3>{props.title}</h3>
           </div>
           <div className='task-column__body'>
-            <Card isPressable isHoverable variant='bordered'>
-              <Card.Body>
-                <Text>A pressable card.</Text>
-              </Card.Body>
-            </Card>
+            {props.tasks?.map((task, index) => (
+              <Task
+                key={index}
+                id={(task.id_projet ??= task.id_ticket)}
+                title={(task.nom_projet ??= task.titre_ticket)}
+                description={
+                  (task.description_projet ??= task.description_ticket)
+                }
+                handleShowStatus={props.handleShowStatus}
+              />
+            ))}
           </div>
         </div>
       </Card.Body>

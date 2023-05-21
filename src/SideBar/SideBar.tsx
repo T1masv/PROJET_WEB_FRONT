@@ -9,8 +9,8 @@ const SideBar = (props: any) => {
       </div>
 
       <div className='options'>
-        {["user", "pannel", "board"].map((x) => (
-          <div className='iconsButton'>
+        {["user", "pannel", "board"].map((x, index) => (
+          <div className='iconsButton' key={index}>
             <UserIcon
               filled={undefined}
               size={undefined}
