@@ -1,21 +1,20 @@
 .main {
   width: 100%;
   height: 100%;
-  margin: 20px;
-  background: #fff;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  border-radius: 2rem;
+  background-clip: content-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .head {
-  grid-area: 1 / 1 / 2 / 6;
+  margin-bottom: 2rem;
 }
-.board {
-  grid-area: 2 / 1 / 6 / 5;
-}
-.status {
-  grid-area: 2 / 5 / 6 / 6;
+
+.mainBoard {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

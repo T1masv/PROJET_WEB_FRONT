@@ -1,4 +1,24 @@
 .board {
-  width: 100%;
+  width: -webkit-fill-available;
+  min-width: 70%;
   height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.board__head {
+  margin-bottom: 10px;
+}
+
+.board__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.board__body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: auto;
 }
