@@ -1,16 +1,27 @@
 import "./ConnectionForm.css";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Input, Spacer } from "@nextui-org/react";
 
 const ConnectionForm = (props: any) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
+    const handleSuccessfulLogin = (id: string) => {
+      localStorage.setItem('userID', id);
+      location.href = "/";
+    };
+
+    const showToastError = (error : string) => {
+      toast.error(error, {
+          position: toast.POSITION.TOP_RIGHT
+      });
+    };
+
     const handleSubmit = async (event: any) => {
       event.preventDefault();
-  
+    
       try {
         const response = await fetch('http://localhost:3000/api/users/checkAuthentification', {
           method: 'POST',
@@ -21,16 +32,27 @@ const ConnectionForm = (props: any) => {
             pseudo: username,
             mot_de_passe: password
           }),
-          mode: 'cors'
         });
+    
+        if (!response.ok) {
+          const responseData = await response.json(); // Capturer le corps de la réponse
+          throw new Error(responseData.error); 
+        }     
         const data = await response.json();
-  
+    
         // Réponse
-        console.log(data);
-        location.href = "/"
+      if (data && data.id_Utilisateur) {
+        handleSuccessfulLogin(data.id_Utilisateur);
+      } else {
+        throw new Error("ID utilisateur manquant dans la réponse.");
+      }
+        // 
       } catch (error) {
-        // Gestion des erreurs
-        console.log(error);
+        if (typeof error === "object" && error !== null && "message" in error) {
+          showToastError((error as { message: string }).message);
+        } else {
+          showToastError("Une erreur s'est produite.");
+        }
       }
     };
 
@@ -47,6 +69,7 @@ const ConnectionForm = (props: any) => {
             </div>
             <input type="submit" className="FormButton" value="Connexion"/>
         </form>
+        <ToastContainer />
     </div>
   );
 };

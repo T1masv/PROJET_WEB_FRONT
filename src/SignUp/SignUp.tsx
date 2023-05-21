@@ -45,7 +45,7 @@ const SignUp = (props: any) => {
   return (
     <div className="SignUp">
         <form className="card" onSubmit={handleSubmit}>
-            <h1>Connexion</h1>
+            <h1>Inscription</h1>
             <div className="inputs">
                 <Spacer y={0.5} />
                 <Input labelPlaceholder="Email" color="default" value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -58,7 +58,7 @@ const SignUp = (props: any) => {
                 <Spacer y={0.5} />
                 <Input.Password labelPlaceholder="Mot de passe" color="default" value={password} onChange={(e) => setPassword(e.target.value)}/>                
             </div>
-            <input type="submit" className="FormButton" value="Connexion"/>
+            <input type="submit" className="FormButton" value="S'inscire"/>
         </form>
     </div>
   );
