@@ -4,7 +4,14 @@ import App from "./App";
 import ConnectionForm from "./ConnectionForm/ConnectionForm";
 import "./index.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import SignUp from "./SignUp/SignUp";
+import UserManagement from "./UserManagement/UserManagement";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +21,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <ConnectionForm />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/usermanagement",
+    element: <UserManagement />,
   },
 ]);
 

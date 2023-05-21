@@ -1,0 +1,17 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: red;
+    z-index: 2;
+}
+
+.header .left {
+    padding: 1rem 2rem;
+}
+
+.header .right {
+    margin-right: 2rem;
+    align-items: center;
+}
