@@ -1,0 +1,32 @@
+.ConnectionForm {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 15%;
+}
+
+form {
+    width: 100%;
+    border: 1px solid #f1f1f1;
+}
+
+h1 {
+    margin: 0 auto;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+input[type=submit] {
+    border-radius: var(--border-radius);
+    color: var(--color-white);
+    background: var(--color-primary);
+    padding: 14px 20px;
+    margin: 8px 0;
+    margin-top: 1.8rem;
+    width: 100%;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}

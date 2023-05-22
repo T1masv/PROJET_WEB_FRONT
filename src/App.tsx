@@ -3,12 +3,13 @@ import "./App.css";
 
 import SideBar from "./SideBar/SideBar";
 import Main from "./Main/Main";
+import Header from "./Header/Header";
 
 function App() {
   return (
     <div className='App'>
-      <SideBar />
-      <Main />
+      <SideBar></SideBar>
+      <Main></Main>
     </div>
   );
 }

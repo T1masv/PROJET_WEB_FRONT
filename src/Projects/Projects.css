@@ -1,0 +1,15 @@
+.shadow {
+    box-shadow: var(--box-shadow);
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 0.8rem;
+  }
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
