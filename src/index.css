@@ -7,6 +7,11 @@
   --color-white: #fff;
   --color-background: #f6f6f9;
   --color-light: rgba(132, 139, 200, 0.18);
+  --color-dark: #363949;
+  --color-info-dark: #7d8da1;
+
+  --border-radius: 12px;
+  --color-light: rgba(132, 139, 200, 0.18);
 
   --card-border-radius: 2rem;
   --card-padding: 1.8rem;

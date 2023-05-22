@@ -1,3 +1,4 @@
+import Projects from "../Projects/Projects";
 import "./Board.css";
 import TaskColumn from "../TaskColumn/TaskColumn";
 import { Card, Text, Badge, useModal } from "@nextui-org/react";
