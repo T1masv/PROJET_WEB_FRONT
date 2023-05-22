@@ -1,6 +1,6 @@
 import "./Main.css";
 
-import { Input, Modal, useModal } from "@nextui-org/react";
+import { Avatar, Input, Modal, useModal } from "@nextui-org/react";
 import { SearchIcon } from "../icons/icons";
 import Board from "../Board/Board";
 import { useState, useEffect } from "react";
@@ -68,13 +68,17 @@ function Main(props) {
   return (
     <div className='main'>
       <div className='head'>
-        <div className='search'>
+        <div
+          className='search'
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
           <Input
             width='50%'
             placeholder='Search'
             color='secondary'
             contentLeft={<SearchIcon width='24' height='24' />}
           />
+          <Avatar text='Joe' size='md' />
         </div>
       </div>
       <div className='mainBoard'>

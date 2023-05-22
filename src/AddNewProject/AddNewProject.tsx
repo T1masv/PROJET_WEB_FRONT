@@ -1,6 +1,8 @@
 import { Modal, Input, Row, Checkbox, Button, Text } from "@nextui-org/react";
 import { useState } from "react";
 
+import "./AddNewProject.css";
+
 function AddNewProject(props: any) {
   const [nomProjet, setNomProjet] = useState("");
   const [descriptionProjet, setDescriptionProjet] = useState("");
@@ -19,31 +21,42 @@ function AddNewProject(props: any) {
       <Modal.Header>
         <Text>Add New Project</Text>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body css={{ marginTop: "2rem" }}>
         <Input
-          labelPlaceholder='Nom projet'
-          onMouseDown={(ev) => setNomProjet(ev.target.value)}
+          className='input'
+          label='Nom projet'
+          onKeyDown={(ev) => setNomProjet(ev.target.value)}
         />
         <Input
-          labelPlaceholder='Description projet'
-          onMouseDown={(ev) => setDescriptionProjet(ev.target.value)}
+          className='input'
+          label='Description projet'
+          onKeyDown={(ev) => setDescriptionProjet(ev.target.value)}
         />
         <Input
-          labelPlaceholder='Date creation'
-          onMouseDown={(ev) => setDateCreation(ev.target.value)}
+          className='input'
+          label='Date creation'
+          onKeyDown={(ev) => setDateCreation(ev.target.value)}
         />
         <Input
-          labelPlaceholder='Id createur'
-          onMouseDown={(ev) => setIdCreateur(ev.target.value)}
+          className='input'
+          label='Id createur'
+          onKeyDown={(ev) => setIdCreateur(ev.target.value)}
         />
         <Input
-          labelPlaceholder='Progression'
-          onMouseDown={(ev) => setProgression(ev.target.value)}
+          className='input'
+          label='Progression'
+          onKeyDown={(ev) => setProgression(ev.target.value)}
         />
         <Input
-          labelPlaceholder='Status'
-          onMouseDown={(ev) => setStatus(ev.target.value)}
+          className='input'
+          label='Status'
+          onKeyDown={(ev) => setStatus(ev.target.value)}
         />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button auto flat color='error' onPress={() => props.setVisible(false)}>
+          Close
+        </Button>
         <Button
           auto
           onClick={() => {
@@ -56,8 +69,10 @@ function AddNewProject(props: any) {
               status
             );
           }}
-        />
-      </Modal.Body>
+        >
+          <Text color='fff'>Add</Text>
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 }
