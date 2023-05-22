@@ -12,32 +12,30 @@ import {
 } from "react-router-dom";
 import SignUp from "./SignUp/SignUp";
 import UserManagement from "./UserManagement/UserManagement";
-import UserDetails from "./UserDetails/UserDetails";
 import UserUpdates from "./UserUpdates/UserUpdates";
 
-const router = createBrowserRouter(
-  [
-    {
-      path : '/',
-      element: <App />,
-    },
-    {
-      path : '/login',
-      element: <ConnectionForm />
-    },
-    {
-      path : '/signup',
-      element: <SignUp />
-    },
-    {
-      path : '/usermanagement',
-      element: <UserManagement />
-    {
-      path: '/update/:id',
-      element: <UserUpdates/>,
-    },
-  ]
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/login",
+    element: <ConnectionForm />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/usermanagement",
+    element: <UserManagement />,
+  },
+  {
+    path: "/update/:id",
+    element: <UserUpdates />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
