@@ -30,3 +30,13 @@ input[type=submit] {
     flex-direction: column;
     gap: .8rem;
 }
+
+.FormButton {
+    border : none;
+}
+
+.FormButton:hover {
+    background : white;
+    color: black;
+    border: solid 1px black;
+}

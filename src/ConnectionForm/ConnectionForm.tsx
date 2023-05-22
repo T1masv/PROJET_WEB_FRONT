@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Input, Spacer } from "@nextui-org/react";
+import { Card } from "@nextui-org/react";
+
 
 const ConnectionForm = (props: any) => {
     const [username, setUsername] = useState('');
@@ -59,6 +61,8 @@ const ConnectionForm = (props: any) => {
   return (
     <div className="ConnectionForm">
         <form className="card" onSubmit={handleSubmit}>
+        <Card variant="bordered">
+          <Card.Body>
             <h1>Connexion</h1>
             <div className="inputs">
                 <Spacer y={0.5} />
@@ -67,7 +71,10 @@ const ConnectionForm = (props: any) => {
                 <Input.Password labelPlaceholder="Mot de passe"color="default" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>                
                 <a href="/signup" className="text-muted">Inscription</a>
             </div>
-            <input type="submit" className="FormButton" value="Connexion"/>
+            <input type="submit" className="FormButton" value="Connexion"/>          
+          </Card.Body>
+        </Card>
+
         </form>
         <ToastContainer />
     </div>
