@@ -19,6 +19,8 @@
 .board__body {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   height: auto;
+}
+.add_column_btn {
+  background: #f6f6f9 !important;
 }

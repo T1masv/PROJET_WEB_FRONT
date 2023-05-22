@@ -1,4 +1,4 @@
-import { Card, Text, Badge } from "@nextui-org/react";
+import { Card, Text, Badge, Progress } from "@nextui-org/react";
 
 function Task(props: any) {
   return (
@@ -12,11 +12,16 @@ function Task(props: any) {
       }}
     >
       <Card.Header>
-        <Text>{props.title}</Text>
+        <Text b>{props.title}</Text>
         <div className='task__tags'></div>
       </Card.Header>
       <Card.Body>
         <Text>{props.description}</Text>
+        {props.progress ? (
+          <Progress value={props.progress} color='error' size='sm' />
+        ) : (
+          ""
+        )}
       </Card.Body>
     </Card>
   );

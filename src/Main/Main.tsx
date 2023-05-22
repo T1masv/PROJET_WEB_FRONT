@@ -36,6 +36,35 @@ function Main(props) {
     }
   };
 
+  const handleAddNewProject = async (
+    nom_projet: string,
+    description_projet: string,
+    date_creation: string,
+    id_createur: number,
+    progression: number,
+    status: string
+  ) => {
+    const payload = {
+      nom_projet,
+      description_projet,
+      date_creation,
+      id_createur,
+      progression,
+      status,
+    };
+
+    const response = await fetch("http://localhost:3000/api/project/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <div className='main'>
       <div className='head'>
@@ -62,14 +91,13 @@ function Main(props) {
           aria-describedby='modal-description'
           {...bindings}
         >
-          <Modal.Header>
-            <h2 id='modal-title'>Status</h2>
-          </Modal.Header>
           <Modal.Body>
             <div className='status'>
               <Board
+                title='Status'
                 data={tasks}
                 columns={new Set(tasks?.map((x) => x.status_ticket))}
+                handleAddNewProject={handleAddNewProject}
               />
             </div>
           </Modal.Body>

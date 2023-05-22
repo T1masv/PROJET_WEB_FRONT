@@ -1,15 +1,23 @@
 .task-column {
   height: 100%;
-  min-width: 30%;
   margin-top: 10px;
 }
 
+.task-column:not(:last-child) {
+  margin-right: 10px;
+}
 .task-column__head > h3 {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 2rem;
+  position: sticky;
+  top: 0px;
 }
 
 .task:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.add_task_btn {
+  background: #f6f6f9 !important;
 }
