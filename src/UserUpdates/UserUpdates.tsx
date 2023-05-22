@@ -1,6 +1,6 @@
 import "./UserUpdates.css";
 import { useState, useEffect } from 'react';
-import { Input, Spacer } from "@nextui-org/react";
+import { Input, Spacer, Card } from "@nextui-org/react";
 import { useParams } from 'react-router-dom';
 
 
@@ -76,20 +76,24 @@ function UserUpdates() {
   return (
     <div className="SignUp">
         <form className="card" onSubmit={handleSubmit}>
-            <h1>Update</h1>
+        <Card variant="bordered">
+            <Card.Body>
+            <h1>Modifier utilisateur</h1>
             <div className="inputs">
                 <Spacer y={0.5} />
-                <Input labelPlaceholder="Email" initialValue={email} color="default" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <Input labelPlaceholder="Nom"color="default" value={nom} onChange={(e) => setNom(e.target.value)}/>  
                 <Spacer y={0.5} />
-                <Input labelPlaceholder="Nom"color="default" value={nom} onChange={(e) => setNom(e.target.value)}/>                
+                <Input labelPlaceholder="Prenom" color="default" value={prenom} onChange={(e) => setPrenom(e.target.value)}/>            
                 <Spacer y={0.5} />
-                <Input labelPlaceholder="Prenom" color="default" value={prenom} onChange={(e) => setPrenom(e.target.value)}/>
+                <Input labelPlaceholder="Email" color="default" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <Spacer y={0.5} />
                 <Input labelPlaceholder="Pseudo" color="default" value={username} onChange={(e) => setUsername(e.target.value)}/>
                 <Spacer y={0.5} />
                 <Input.Password labelPlaceholder="Mot de passe" color="default" value={password} onChange={(e) => setPassword(e.target.value)}/>                
             </div>
-            <input type="submit" className="FormButton" value="Mettre a jour"/>
+            <input type="submit" className="FormButton" value="S'inscire"/>
+            </Card.Body>
+          </Card>
         </form>
     </div>
   );

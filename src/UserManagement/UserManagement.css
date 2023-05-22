@@ -2,3 +2,36 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
   }
+
+.flex {
+  display: flex;
+  height: 100vh;
+}
+
+.inline-flex {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.4rem;
+}
+
+.UserInfo {
+  display: flex ;
+  flex-direction: column;
+  gap: 0.4rem; 
+}
+
+.Icons {
+  display: flex ;
+  flex-direction: column;
+  gap: 0.4rem; 
+  float: right !important;
+}
+
+.link {
+  color: black;
+}
+
+.pdp {
+  font-size: xx-large;
+  
+}

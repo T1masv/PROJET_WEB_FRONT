@@ -1,7 +1,22 @@
 import "./UserManagement.css";
+import { VerticalDots, Zoom_In, Edit, Admin, NotAdmin } from "../icons/icons";
 import { useState, useEffect } from 'react';
-import { Modal, useModal, Card, Text } from "@nextui-org/react";
+import { Modal, useModal, Card, Text, Avatar, Grid, Badge, Button, Popover } from "@nextui-org/react";
 import UserDetails from "../UserDetails/UserDetails";
+import SideBar from "../SideBar/SideBar";
+import { ToastContainer, toast } from 'react-toastify';
+
+const showToastError = (error : string) => {
+  toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT
+  });
+};
+
+const showToastSuccess = (message : string) => {
+  toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT
+  });
+};
 
 const handleMakeAdmin = (id: number) => async (event: React.MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();
@@ -16,6 +31,7 @@ const handleMakeAdmin = (id: number) => async (event: React.MouseEvent<HTMLAncho
     });
 
     // Gérer la réponse de l'API si nécessaire
+    showToastSuccess('L\' utilisateur possède maintenant les droits de developpeur');
     console.log('Make Admin request successful');
   } catch (error) {
     // Gérer les erreurs de l'API
@@ -36,9 +52,11 @@ const handleRemoveFromAdmin = (id: number) => async (event: React.MouseEvent<HTM
     });
 
     // Gérer la réponse de l'API si nécessaire
+    showToastSuccess('L\' utilisateur possède maintenant les droits de rapporteur');
     console.log('Remove from Admin request successful');
   } catch (error) {
     // Gérer les erreurs de l'API
+    showToastError('Remove from Admin request failed');
     console.log('Remove from Admin request failed', error);
   }
 };
@@ -49,6 +67,10 @@ const UserManagement = (props: any) => {
     const { setVisible, bindings } = useModal();
     const [selectedUserId, setSelectedUserId] = useState(Number);
 
+    const getInitials = (firstName : string, lastName : string) => {
+      const initials = `${firstName.charAt(0)}${lastName.charAt(0)}`;
+      return initials
+    }
   
     const getUsers = async () => {  
       try {
@@ -73,7 +95,8 @@ const UserManagement = (props: any) => {
       }, []);
 
       return (
-        <div>
+        <div className="flex">
+          <SideBar></SideBar>
           <div className="details">
             <Modal scroll width="600px" aria-labelledby="modal-title" aria-describedby="modal-description" {...bindings}>
               <Modal.Header>
@@ -87,20 +110,32 @@ const UserManagement = (props: any) => {
             </Modal>
           </div>
             {userData.length > 0 ? (
-                <div className="grid">
+                <div className="">
+                  <Grid.Container gap={2} >
                     {userData.map((user: any) => (
-                        <Card isPressable isHoverable variant="bordered" key={user.id_utilisateur} onPress={() => {
-                          setSelectedUserId(user.id_utilisateur);
-                          setVisible(true);
-                        }}>
-                            <Card.Body>
-                                <Text>{user.nom} {user.prenom}</Text>
-                                <a href={`/update/${user.id_utilisateur}`}>Update</a>
-                                <a href={`/usermanagement`} onClick={handleMakeAdmin(user.id_utilisateur)}>{user.role === 2 || user.role === null ? "Make Admin" : null}</a>
-                                <a href={`/usermanagement`} onClick={handleRemoveFromAdmin(user.id_utilisateur)}>{user.role === 1 ? "Remove from Admin" : null}</a>
-                            </Card.Body>
+                      <Grid xs={3}>
+                        <Card isPressable isHoverable variant="bordered" key={user.id_utilisateur} >
+                          <Card.Body className="inline-flex">
+                            <Avatar className="pdp" text={getInitials(user.nom, user.prenom)} size="xl" />
+                            <div className="UserInfo">
+                              <Text>{user.nom} {user.prenom}</Text>
+                              <Text>{user.email}</Text>
+                              {user.role === 2 || user.role === null ? (<Badge variant="bordered" color="primary">Rapporteur</Badge>) : null}
+                              {user.role === 1 ? (<Badge variant="bordered" color="error">Developpeur</Badge>) : null}
+                            </div>
+                            <div className="Icons">
+                              <a className="link" href={`/update/${user.id_utilisateur}`}><span><Edit/></span></a>
+                              <span onClick={() => { setSelectedUserId(user.id_utilisateur); setVisible(true);} }><Zoom_In/></span>
+                              
+                              {user.role === 2 || user.role === null ? (<span onClick={handleMakeAdmin(user.id_utilisateur)}><Admin/></span>) : null}
+                              {user.role === 1 ? (<span onClick={handleRemoveFromAdmin(user.id_utilisateur)}><NotAdmin/></span>) : null}
+                            </div>  
+                          </Card.Body>
                         </Card>
+                      </Grid>
                     ))}
+                  </Grid.Container>
+                  <ToastContainer />
                 </div>
             ) : (
                 <p>Aucun utilisateur trouvé.</p>

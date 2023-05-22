@@ -1,6 +1,6 @@
 import "./Main.css";
 
-import { Avatar, Input, Modal, useModal } from "@nextui-org/react";
+import { Avatar, Input, Modal, useModal, Popover } from "@nextui-org/react";
 import { SearchIcon } from "../icons/icons";
 import Board from "../Board/Board";
 import { useState, useEffect } from "react";
@@ -78,7 +78,17 @@ function Main(props) {
             color='secondary'
             contentLeft={<SearchIcon width='24' height='24' />}
           />
-          <Avatar text='Joe' size='md' />
+          
+          <Popover >
+          <Popover.Trigger>
+            <Avatar text='Joe' size='md' />
+          </Popover.Trigger>
+          <Popover.Content css={{ px: '$4', py: '$2' }}>
+            <a href="/usermanagement">User Management</a>
+          </Popover.Content>
+        </Popover>
+          
+        
         </div>
       </div>
       <div className='mainBoard'>
