@@ -44,7 +44,6 @@ function UserDetails(props: {id: number}) {
       <p>Nom: {userData.nom}</p>
       <p>Prénom: {userData.prenom}</p>
       <p>Pseudo: {userData.pseudo}</p>
-      <p>Mot de passe: {userData.mot_de_passe}</p>
       <p>Rôle: {userData.role}</p>
     </div>
   );

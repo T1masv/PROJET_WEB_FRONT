@@ -13,6 +13,7 @@ import {
 import SignUp from "./SignUp/SignUp";
 import UserManagement from "./UserManagement/UserManagement";
 import UserUpdates from "./UserUpdates/UserUpdates";
+import ClientManagement from "./ClientManagement/ClientManagement";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/update/:id",
+    element: <UserUpdates />,
+  },
+  {
+    path: "/clientmanagement",
+    element: <ClientManagement />,
+  },
+  {
+    path: "/updateClient/:id",
     element: <UserUpdates />,
   },
 ]);

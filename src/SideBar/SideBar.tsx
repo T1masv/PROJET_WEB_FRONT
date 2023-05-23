@@ -1,11 +1,17 @@
 import { UserIcon, LogoutIcon } from "../icons/icons";
 import { Button } from "@nextui-org/react";
 import "./SideBar.css";
+
+const logout = async () => {
+  localStorage.removeItem("userID");
+  window.location.href = "/login";
+};
+
 const SideBar = (props: any) => {
   return (
     <div className='navBar'>
       <div className='logo'>
-        <img src='./logo.png' alt='' style={{ width: 100 }} />
+        <a href="/"><img src='./logo.png' alt='' style={{ width: 100 }} /></a>
       </div>
 
       <div className='options'>
@@ -23,7 +29,7 @@ const SideBar = (props: any) => {
       </div>
       <div className='logout'>
         <div className='iconsButton'>
-          <LogoutIcon />
+        <span onClick={() => logout()}><LogoutIcon /></span>
         </div>
       </div>
     </div>
