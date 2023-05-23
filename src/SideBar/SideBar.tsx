@@ -4,6 +4,7 @@ import "./SideBar.css";
 
 const logout = async () => {
   localStorage.removeItem("userID");
+  localStorage.removeItem("role");
   window.location.href = "/login";
 };
 

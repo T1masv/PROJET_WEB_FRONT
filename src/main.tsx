@@ -14,6 +14,7 @@ import SignUp from "./SignUp/SignUp";
 import UserManagement from "./UserManagement/UserManagement";
 import UserUpdates from "./UserUpdates/UserUpdates";
 import ClientManagement from "./ClientManagement/ClientManagement";
+import Dashboard from "./Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/updateClient/:id",
     element: <UserUpdates />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

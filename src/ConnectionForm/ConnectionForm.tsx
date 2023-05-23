@@ -10,8 +10,9 @@ const ConnectionForm = (props: any) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
-    const handleSuccessfulLogin = (id: string) => {
+    const handleSuccessfulLogin = (id: string, role:string) => {
       localStorage.setItem('userID', id);
+      localStorage.setItem('role', role);
       location.href = "/";
     };
 
@@ -44,7 +45,7 @@ const ConnectionForm = (props: any) => {
     
         // Réponse
       if (data && data.id_Utilisateur) {
-        handleSuccessfulLogin(data.id_Utilisateur);
+        handleSuccessfulLogin(data.id_Utilisateur, data.role);
       } else {
         throw new Error("ID utilisateur manquant dans la réponse.");
       }
