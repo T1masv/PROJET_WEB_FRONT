@@ -1,12 +1,12 @@
-import "./UserDetails.css";
+import "./ClientDetails.css";
 import { useState, useEffect } from 'react';
 
-function UserDetails(props: {id: number}) {
+function ClientDetails(props: {id: number}) {
   const [userData, setUserData] = useState<any>(null);
 
   const getUserDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/users/getUsersById/${props.id}`, {
+      const response = await fetch(`http://localhost:3000/api/client/getClientById/${props.id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -38,13 +38,13 @@ function UserDetails(props: {id: number}) {
 
   return (
     <div className="UserDetails">
+      <p>Nom client: {userData.nom_client}</p>
       <p>Email: {userData.email}</p>
-      <p>Nom: {userData.nom}</p>
-      <p>Prénom: {userData.prenom}</p>
-      <p>Pseudo: {userData.pseudo}</p>
-      <p>Rôle: {userData.role}</p>
+      <p>Site: {userData.site}</p>
+      <p>Adresse: {userData.adresse}</p>
+      
     </div>
   );
 }
 
-export default UserDetails;
+export default ClientDetails;
